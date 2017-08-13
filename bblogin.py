@@ -1,4 +1,5 @@
 import requests
+import getpass
 from xml.etree import ElementTree as bbTree
 
 class Account:
@@ -10,7 +11,7 @@ def openBB(bbSession, bbapiurl):
     # Get user login name and access code
     # clear-text format for access code
     ln = input('Enter Buzzerbeater Login Name: ')
-    ac = input('Enter Buzzerbeater Access Code: ')
+    ac = getpass.getpass('Enter Buzzerbeater Access Code: ')
 
     # create user Account object
     user = Account(ln, ac)
