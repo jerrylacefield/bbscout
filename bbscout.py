@@ -9,6 +9,7 @@ bbSession = requests.Session()
 loginroot = bblogin.openBB(bbSession, bbapiurl)
 loginSuccess = bblogin.isAuthorized(loginroot)
 
+# Read teaminfo.aspx page
 myTeam = {}
 myTeamRoot = myteam.getTeamInfo(bbSession, bbapiurl)
 myTeam = myteam.addTeamInfo(myTeamRoot, myTeam)
