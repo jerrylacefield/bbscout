@@ -39,7 +39,9 @@ def getTeamInfo(bbSession, bbapiurl):
 
 def printTeamInfo(teams):
     for k,v in teams.items():
-        print(k,v)
+        print(k)
+        for k,v in teams[k].items():
+            print(k,v)
 
 def writeTeamInfo(myTeamRoot, myTeam):
     for child in myTeamRoot.iter():
