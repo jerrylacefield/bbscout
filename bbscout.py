@@ -11,7 +11,7 @@ bbSession = requests.Session()
 user = bblogin.makeAccount()
 loginroot = bblogin.openBB(bbSession, bbapiurl, user)
 loginSuccess = bblogin.isLoggedIn(loginroot)
-print(user)
+
 if loginSuccess:
     print('Welcome,',bblogin.getMyLoginName(user))
 
