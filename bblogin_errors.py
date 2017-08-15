@@ -9,3 +9,7 @@ class InvalidLogin(Error):
 class TooManyBadAttempts(Error):
     """Raised when there have been too many bad login attempts"""
     pass
+
+class ServerError(Error):
+    """"Raised when ServerError is returned"""
+    pass

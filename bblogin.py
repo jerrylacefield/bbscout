@@ -27,8 +27,10 @@ def openBB(bbSession, bbapiurl, user):
 
             ac = '' # overwrite login access code
 
-            if isLoggedIn(root):
-                loggedIn = True
+            if isServerError(root):
+                raise loginError.ServerError
+            elif isLoggedIn(root):
+                # loggedIn = True
                 break
             else:
                 failedAttempts += 1
@@ -44,8 +46,20 @@ def openBB(bbSession, bbapiurl, user):
         except loginError.TooManyBadAttempts:
             print("Too many failed attempts ... exiting BB Scout")
             break
+        except loginError.ServerError:
+            print("BBAPI Server is currently unavailable ... try again later")
+            break
 
     return root
+
+# test if ServerError
+def isServerError(root):
+    se = False
+    for child in root.findall('error'):
+        if child.attrib['message'] == "ServerError":
+            se = True
+            break
+    return se
 
 # test if login procedure called correctly, returns boolean
 def isLoggedIn(root):
